@@ -1,3 +1,5 @@
+var APP_NAME = "Intl.js Explorer";
+
 var _ReactRouterDOM = ReactRouterDOM,
     BrowserRouter = _ReactRouterDOM.BrowserRouter,
     Route = _ReactRouterDOM.Route,
@@ -31,7 +33,7 @@ var App = function App() {
           { "class": "navbar-nav mr-auto" },
           React.createElement(
             "li",
-            { "class": "nav-item active" },
+            { "class": "nav-item" },
             React.createElement(
               Link,
               { to: "/about/browser", className: "nav-link" },
@@ -113,6 +115,8 @@ var App = function App() {
     )
   );
 };
+
+document.title = APP_NAME;
 
 ReactDOM.render(React.createElement(
   BrowserRouter,

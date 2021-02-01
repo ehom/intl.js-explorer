@@ -1,3 +1,5 @@
+const APP_NAME = "Intl.js Explorer";
+
 const { BrowserRouter, Route, Link, Switch, Redirect } = ReactRouterDOM;
 
 const App = () => (
@@ -10,7 +12,7 @@ const App = () => (
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <Link to="/about/browser" className="nav-link">This Browser</Link>
           </li>
           <li class="nav-item">
@@ -56,6 +58,8 @@ const App = () => (
     </div>
   </div>
 );
+
+document.title = APP_NAME;
 
 ReactDOM.render(
   <BrowserRouter>
