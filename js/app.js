@@ -6,6 +6,8 @@ var _ReactRouterDOM = ReactRouterDOM,
     Link = _ReactRouterDOM.Link,
     Switch = _ReactRouterDOM.Switch,
     Redirect = _ReactRouterDOM.Redirect;
+var _ReactRouterDOM2 = ReactRouterDOM,
+    HashRouter = _ReactRouterDOM2.HashRouter;
 
 
 var App = function App() {
@@ -119,7 +121,7 @@ var App = function App() {
 document.title = APP_NAME;
 
 ReactDOM.render(React.createElement(
-  BrowserRouter,
+  HashRouter,
   null,
   React.createElement(App, null)
 ), document.getElementById("root"));
