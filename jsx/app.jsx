@@ -1,6 +1,6 @@
 const APP_NAME = "Intl.js Explorer";
 
-const { BrowserRouter, Route, Link, Switch, Redirect } = ReactRouterDOM;
+const { HashRouter, Route, Link, Switch, Redirect } = ReactRouterDOM;
 
 const App = () => (
   <div>
@@ -62,9 +62,9 @@ const App = () => (
 document.title = APP_NAME;
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <App />
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById("root")
 );
 
