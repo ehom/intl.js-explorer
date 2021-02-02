@@ -22,14 +22,25 @@ const strings = {
       few: "{{count}} jabłka"
     },
     "moose": {
-      many: "łoś",
-      one: "",
-      few: ""
+      many: "{{count}} łosi",
+      one: "{{count}} łoś",
+      few: "{{count}} łosie"
+    },
+    "mice": {
+      many: "{{count}} blind mice",
+      one: "{{count}} blind mouse",
+      few: "{{count}} blind mice"
     }
   },
   ja: {
     "apples": {
       other: "リンゴの{{count}}個"
+    },
+    "moose": {
+      other: "{{count}} moose"
+    },
+    "mice": {
+      other: "{{count}} blind mice"
     }
   }
 };
@@ -60,7 +71,7 @@ const CountingPage = () => {
         </div>
         <div className="container">
           <p>In what language?</p>
-          <LanguageSelector languages={["en", "pl", "ja"]} onChange={onLanguageChanged} />
+          <ItemSelector items={["en", "pl", "ja"]} onChange={onLanguageChanged} />
         </div>
       </div>
       <div className="container">
@@ -88,12 +99,6 @@ const Example = ({language, object}) => {
 
 Example.defaultProps = {
   language: 'en'
-};
-
-const LanguageSelector = ({languages, onChange}) => {
-  const options = languages.map(language => <option value={language}>{language}</option>);
-  
-  return <select className="form-control" onChange={onChange}>{options}</select>;
 };
 
 const ItemSelector = ({items, onChange}) => {
