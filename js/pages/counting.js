@@ -26,14 +26,25 @@ var strings = {
       few: "{{count}} jabłka"
     },
     "moose": {
-      many: "łoś",
-      one: "",
-      few: ""
+      many: "{{count}} łosi",
+      one: "{{count}} łoś",
+      few: "{{count}} łosie"
+    },
+    "mice": {
+      many: "{{count}} blind mice",
+      one: "{{count}} blind mouse",
+      few: "{{count}} blind mice"
     }
   },
   ja: {
     "apples": {
       other: "リンゴの{{count}}個"
+    },
+    "moose": {
+      other: "{{count}} moose"
+    },
+    "mice": {
+      other: "{{count}} blind mice"
     }
   }
 };
@@ -90,7 +101,7 @@ var CountingPage = function CountingPage() {
           null,
           "In what language?"
         ),
-        React.createElement(LanguageSelector, { languages: ["en", "pl", "ja"], onChange: onLanguageChanged })
+        React.createElement(ItemSelector, { items: ["en", "pl", "ja"], onChange: onLanguageChanged })
       )
     ),
     React.createElement(
@@ -126,28 +137,9 @@ Example.defaultProps = {
   language: 'en'
 };
 
-var LanguageSelector = function LanguageSelector(_ref2) {
-  var languages = _ref2.languages,
+var ItemSelector = function ItemSelector(_ref2) {
+  var items = _ref2.items,
       onChange = _ref2.onChange;
-
-  var options = languages.map(function (language) {
-    return React.createElement(
-      "option",
-      { value: language },
-      language
-    );
-  });
-
-  return React.createElement(
-    "select",
-    { className: "form-control", onChange: onChange },
-    options
-  );
-};
-
-var ItemSelector = function ItemSelector(_ref3) {
-  var items = _ref3.items,
-      onChange = _ref3.onChange;
 
   var options = items.map(function (item) {
     return React.createElement(

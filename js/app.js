@@ -1,13 +1,11 @@
 var APP_NAME = "Intl.js Explorer";
 
 var _ReactRouterDOM = ReactRouterDOM,
-    BrowserRouter = _ReactRouterDOM.BrowserRouter,
+    HashRouter = _ReactRouterDOM.HashRouter,
     Route = _ReactRouterDOM.Route,
     Link = _ReactRouterDOM.Link,
     Switch = _ReactRouterDOM.Switch,
     Redirect = _ReactRouterDOM.Redirect;
-var _ReactRouterDOM2 = ReactRouterDOM,
-    HashRouter = _ReactRouterDOM2.HashRouter;
 
 
 var App = function App() {
