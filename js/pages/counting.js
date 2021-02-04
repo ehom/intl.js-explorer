@@ -72,14 +72,15 @@ var CountingPage = function CountingPage() {
     setItem(event.target.value);
   }
 
+  var style = { backgroundColor: "AntiqueWhite" };
   return React.createElement(
-    React.Fragment,
-    null,
+    "div",
+    { className: "mt-3" },
     React.createElement(
       "div",
       { className: "jumbotron pt-4 pb-4" },
       React.createElement(
-        "h3",
+        "h4",
         null,
         "Counting in different languages"
       ),
@@ -106,7 +107,7 @@ var CountingPage = function CountingPage() {
     ),
     React.createElement(
       "div",
-      { className: "container" },
+      { className: "container", style: style },
       React.createElement(Example, { language: lang, object: item })
     )
   );
@@ -119,10 +120,12 @@ var Example = function Example(_ref) {
   var rules = new Intl.PluralRules(language);
   var array = [].concat(_toConsumableArray(Array(11).keys()));
   var l = array.map(function (item) {
+    var string = strings[language][object][rules.select(item)].replace("{{count}}", item);
+
     return React.createElement(
       "a",
       { href: "#", className: "list-group-item list-group-item-action" },
-      strings[language][object][rules.select(item)].replace("{{count}}", item)
+      string
     );
   });
 

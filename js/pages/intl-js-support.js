@@ -95,14 +95,16 @@ var IntljsSupportPage = function (_React$Component) {
   _createClass(IntljsSupportPage, [{
     key: "render",
     value: function render() {
+      var style = { backgroundColor: "AntiqueWhite" };
+
       return React.createElement(
-        React.Fragment,
-        null,
+        "div",
+        { className: "mt-3" },
         React.createElement(
           "div",
           { className: "jumbotron pt-4 pb-4" },
           React.createElement(
-            "h3",
+            "h4",
             { className: "pb-3" },
             "Intl.js support in this browser"
           ),
@@ -110,7 +112,7 @@ var IntljsSupportPage = function (_React$Component) {
         ),
         React.createElement(
           "div",
-          { className: "container" },
+          { className: "container", style: style },
           React.createElement(IntlJsSupport, { data: this.state.intljs })
         ),
         React.createElement("hr", null),

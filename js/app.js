@@ -11,29 +11,29 @@ var _ReactRouterDOM = ReactRouterDOM,
 var App = function App() {
   return React.createElement(
     "div",
-    null,
+    { className: "container" },
     React.createElement(
       "nav",
-      { "class": "navbar navbar-expand-lg navbar-light bg-light" },
+      { className: "navbar navbar-expand-lg navbar-light bg-light" },
       React.createElement(
         "a",
-        { "class": "navbar-brand", href: "#" },
+        { className: "navbar-brand", href: "#" },
         "Intl.js Explorer"
       ),
       React.createElement(
         "button",
-        { "class": "navbar-toggler", type: "button", "data-toggle": "collapse", "data-target": "#navbarSupportedContent", "aria-controls": "navbarSupportedContent", "aria-expanded": "false", "aria-label": "Toggle navigation" },
-        React.createElement("span", { "class": "navbar-toggler-icon" })
+        { className: "navbar-toggler", type: "button", "data-toggle": "collapse", "data-target": "#navbarSupportedContent", "aria-controls": "navbarSupportedContent", "aria-expanded": "false", "aria-label": "Toggle navigation" },
+        React.createElement("span", { className: "navbar-toggler-icon" })
       ),
       React.createElement(
         "div",
-        { "class": "collapse navbar-collapse", id: "navbarSupportedContent" },
+        { className: "collapse navbar-collapse", id: "navbarSupportedContent" },
         React.createElement(
           "ul",
-          { "class": "navbar-nav mr-auto" },
+          { className: "navbar-nav mr-auto" },
           React.createElement(
             "li",
-            { "class": "nav-item" },
+            { className: "nav-item" },
             React.createElement(
               Link,
               { to: "/about/browser", className: "nav-link" },
@@ -42,7 +42,7 @@ var App = function App() {
           ),
           React.createElement(
             "li",
-            { "class": "nav-item" },
+            { className: "nav-item" },
             React.createElement(
               Link,
               { to: "/sorting", className: "nav-link" },
@@ -51,7 +51,7 @@ var App = function App() {
           ),
           React.createElement(
             "li",
-            { "class": "nav-item" },
+            { className: "nav-item" },
             React.createElement(
               Link,
               { to: "/pluralRules", className: "nav-link" },
@@ -60,7 +60,7 @@ var App = function App() {
           ),
           React.createElement(
             "li",
-            { "class": "nav-item" },
+            { className: "nav-item" },
             React.createElement(
               Link,
               { to: "/counting", className: "nav-link" },
@@ -69,11 +69,11 @@ var App = function App() {
           ),
           React.createElement(
             "li",
-            { "class": "nav-item" },
+            { className: "nav-item" },
             React.createElement(
               Link,
               { to: "/about", className: "nav-link" },
-              "About This App"
+              "This App"
             )
           )
         )
