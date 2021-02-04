@@ -16,6 +16,9 @@ const App = () => (
             <Link to="/about/browser" className="nav-link">This Browser</Link>
           </li>
           <li className="nav-item">
+            <Link to="/formatted/dates" className="nav-link">Formatted Dates</Link>
+          </li>
+          <li className="nav-item">
             <Link to="/sorting" className="nav-link">Intl.Collator</Link>
           </li>
           <li className="nav-item">
@@ -47,6 +50,10 @@ const App = () => (
 
         <Route path="/pluralRules">
           <PluralRulesPage />
+        </Route>
+
+        <Route path="/formatted/dates">
+          <FormattedDatesPage />
         </Route>
 
         <Route path="/about/browser">

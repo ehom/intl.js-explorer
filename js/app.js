@@ -45,6 +45,15 @@ var App = function App() {
             { className: "nav-item" },
             React.createElement(
               Link,
+              { to: "/formatted/dates", className: "nav-link" },
+              "Formatted Dates"
+            )
+          ),
+          React.createElement(
+            "li",
+            { className: "nav-item" },
+            React.createElement(
+              Link,
               { to: "/sorting", className: "nav-link" },
               "Intl.Collator"
             )
@@ -104,6 +113,11 @@ var App = function App() {
           Route,
           { path: "/pluralRules" },
           React.createElement(PluralRulesPage, null)
+        ),
+        React.createElement(
+          Route,
+          { path: "/formatted/dates" },
+          React.createElement(FormattedDatesPage, null)
         ),
         React.createElement(
           Route,
