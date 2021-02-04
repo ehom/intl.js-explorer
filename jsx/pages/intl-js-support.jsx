@@ -35,20 +35,22 @@ class IntljsSupportPage extends React.Component {
   }
 
   render() {
+    const style = { backgroundColor: "AntiqueWhite" };
+
     return (
-      <React.Fragment>
+      <div className="mt-3">
         <div className="jumbotron pt-4 pb-4">
-          <h3 className="pb-3">Intl.js support in this browser</h3>
+          <h4 className="pb-3">Intl.js support in this browser</h4>
           <BrowserInfo />
         </div>
-        <div className="container">
+        <div className="container" style={style}>
           <IntlJsSupport data={this.state.intljs} />
         </div>
         <hr />
         <div className="container">
           <NodejsInfo version={this.state.nodejs.version} />
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 };

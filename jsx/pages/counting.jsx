@@ -60,11 +60,12 @@ const CountingPage = () => {
     // console.debug("App handleChange:", event.target.value);
     setItem(event.target.value);
   }
-  
+
+  const style = { backgroundColor: "AntiqueWhite" };
   return (
-    <React.Fragment>
+    <div className="mt-3">
       <div className="jumbotron pt-4 pb-4">
-        <h3>Counting in different languages</h3>
+        <h4>Counting in different languages</h4>
         <div className="container mb-3">
           <p>What do you want to count?</p>
           <ItemSelector items={["apples", "moose", "mice"]} onChange={onItemChanged} />
@@ -74,10 +75,10 @@ const CountingPage = () => {
           <ItemSelector items={["en", "pl", "ja"]} onChange={onLanguageChanged} />
         </div>
       </div>
-      <div className="container">
+      <div className="container" style={style}>
         <Example language={lang} object={item} />
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
@@ -85,9 +86,11 @@ const Example = ({language, object}) => {
   let rules = new Intl.PluralRules(language);
   let array = [...Array(11).keys()];
   let l = array.map((item) => {
+    const string = strings[language][object][rules.select(item)].replace("{{count}}", item);
+
     return (
       <a href="#" className="list-group-item list-group-item-action">
-        {strings[language][object][rules.select(item)].replace("{{count}}", item)}
+        {string}
       </a>
     );
   });

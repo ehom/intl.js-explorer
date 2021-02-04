@@ -28,7 +28,7 @@ class SortingPage extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="mt-3">
         <div className="jumbotron pt-4 pb-2">
           <Banner text="Intl.Collator demo" />
         </div>
@@ -49,7 +49,7 @@ class SortingPage extends React.Component {
             </div>
           </div>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

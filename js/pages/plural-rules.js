@@ -1,7 +1,7 @@
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var PluralRulesPage = function PluralRulesPage() {
-  var locales = ["en", "de", "it", "es", "fr", "ar", "he", "zh", "ja", "ru", "pl"];
+  var locales = ["en", "fr", "ar", "he", "zh", "ja", "ru", "pl"];
 
   var TableHeader = function TableHeader(_ref) {
     var labels = _ref.labels;
@@ -38,7 +38,7 @@ var PluralRulesPage = function PluralRulesPage() {
   };
 
   // create array filled with values 0 to 9
-  var counts = [].concat(_toConsumableArray(Array(21).keys()));
+  var counts = [].concat(_toConsumableArray(Array(112).keys()));
 
   var rows = counts.map(function (count) {
     var values = locales.map(function (locale, index) {
@@ -54,7 +54,7 @@ var PluralRulesPage = function PluralRulesPage() {
           ),
           React.createElement(
             "td",
-            null,
+            { className: f.select(count) },
             f.select(count)
           )
         );
@@ -64,7 +64,7 @@ var PluralRulesPage = function PluralRulesPage() {
         null,
         React.createElement(
           "td",
-          null,
+          { className: f.select(count) },
           f.select(count)
         )
       );
@@ -76,21 +76,23 @@ var PluralRulesPage = function PluralRulesPage() {
     );
   });
 
+  var style = { backgroundColor: "AntiqueWhite" };
+
   return React.createElement(
-    React.Fragment,
-    null,
+    "div",
+    { className: "mt-3" },
     React.createElement(
       "div",
-      { className: "jumbotron pt-3 pb-3" },
+      { className: "jumbotron pt-4 pb-2" },
       React.createElement(
-        "h3",
+        "h4",
         null,
         "Intl.PluralRules of several locales"
       )
     ),
     React.createElement(
       "div",
-      { className: "container" },
+      { className: "container", style: style },
       React.createElement(
         "table",
         { className: "table table-hover table-responsive" },

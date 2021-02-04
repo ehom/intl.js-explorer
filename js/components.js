@@ -1,9 +1,9 @@
 var AboutThisApp = function AboutThisApp() {
   return React.createElement(
     "div",
-    { className: "container" },
+    { className: "container mt-3" },
     React.createElement(
-      "h2",
+      "h4",
       null,
       "About This App"
     )

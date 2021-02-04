@@ -1,5 +1,5 @@
 const PluralRulesPage = () => {
-  const locales = ["en", "de", "it", "es", "fr", "ar", "he", "zh", "ja", "ru", "pl"];
+  const locales = ["en", "fr", "ar", "he", "zh", "ja",  "ru", "pl"];
   
   const TableHeader = ( ({labels}) => {
     const columnHeaders = labels.map((label, index) => {
@@ -21,7 +21,7 @@ const PluralRulesPage = () => {
   });
   
   // create array filled with values 0 to 9
-  let counts = [...Array(21).keys()];
+  let counts = [...Array(112).keys()];
     
   const rows = counts.map((count) => {
     const values = locales.map((locale, index) => {
@@ -29,13 +29,13 @@ const PluralRulesPage = () => {
       if (index === 0) {
         return (
           <React.Fragment>
-            <td>{count}</td><td>{f.select(count)}</td>
+            <td>{count}</td><td className={f.select(count)}>{f.select(count)}</td>
           </React.Fragment>
         );
       }
       return (
         <React.Fragment>
-          <td>{f.select(count)}</td>
+          <td className={f.select(count)}>{f.select(count)}</td>
         </React.Fragment>
       );
     });
@@ -44,12 +44,14 @@ const PluralRulesPage = () => {
     );
   });
 
+  const style = { backgroundColor: "AntiqueWhite" };
+
   return (
-    <React.Fragment>
-      <div className="jumbotron pt-3 pb-3">
-        <h3>Intl.PluralRules of several locales</h3>
+    <div className="mt-3">
+      <div className="jumbotron pt-4 pb-2">
+        <h4>Intl.PluralRules of several locales</h4>
       </div>
-      <div className="container">
+      <div className="container" style={style}>
         <table className="table table-hover table-responsive">
           <caption>count</caption>
           <TableHeader labels={locales} />
@@ -58,6 +60,6 @@ const PluralRulesPage = () => {
           </tbody>
         </table>
       </div>
-    </React.Fragment>
+    </div>
   );
 };

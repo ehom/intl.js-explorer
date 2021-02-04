@@ -41,8 +41,8 @@ var SortingPage = function (_React$Component) {
     key: "render",
     value: function render() {
       return React.createElement(
-        React.Fragment,
-        null,
+        "div",
+        { className: "mt-3" },
         React.createElement(
           "div",
           { className: "jumbotron pt-4 pb-2" },
