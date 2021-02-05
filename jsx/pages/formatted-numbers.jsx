@@ -47,7 +47,7 @@ const FormattedNumbersPage = () => {
     "year"
   ];
 
-  const unitDisplays = ["short", "long", "short", "narrow"];
+  const unitDisplays = ["short", "long", "narrow"];
 
   const locales = [
     "en-US",
@@ -72,7 +72,7 @@ const FormattedNumbersPage = () => {
     "pt-PT"
   ];
 
-  const currencies = ["USD", "CAD", "GBP", "EUR", "JPY", "HKD", "RMB", "KRW", "BRL", "TRY"];
+  const currencies = ["USD", "CAD", "GBP", "EUR", "JPY", "HKD", "CNY", "KRW", "BRL", "TRY"];
 
   const currencyDisplays = ["symbol", "narrowSymbol", "code", "name"];
 
