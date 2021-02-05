@@ -5,11 +5,11 @@ var FormattedNumbersPage = function FormattedNumbersPage() {
 
   var units = ["acre", "bit", "byte", "celsius", "centimeter", "day", "degree", "fahrenheit", "fluid-ounce", "foot", "gallon", "gigabit", "gigabyte", "gram", "hectare", "hour", "inch", "kilobit", "kilobyte", "kilogram", "kilometer", "liter", "megabit", "megabyte", "meter", "mile", "mile-scandinavian", "millimeter", "milliliter", "millisecond", "minute", "month", "ounce", "percent", "petabyte", "pound", "second", "stone", "terabit", "terabyte", "week", "yard", "year"];
 
-  var unitDisplays = ["short", "long", "short", "narrow"];
+  var unitDisplays = ["short", "long", "narrow"];
 
   var locales = ["en-US", "en-GB", "en-IN", "fr-FR", "fr-CA", "fr-CH", "it-IT", "it-CH", "de-DE", "de-AT", "de-CH", "tr-TR", "zh-CN", "zh-HK", "ja-JP", "ko-KR", "es-ES", "es-MX", "pt-BR", "pt-PT"];
 
-  var currencies = ["USD", "CAD", "GBP", "EUR", "JPY", "HKD", "RMB", "KRW", "BRL", "TRY"];
+  var currencies = ["USD", "CAD", "GBP", "EUR", "JPY", "HKD", "CNY", "KRW", "BRL", "TRY"];
 
   var currencyDisplays = ["symbol", "narrowSymbol", "code", "name"];
 
