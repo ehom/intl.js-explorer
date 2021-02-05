@@ -19,6 +19,9 @@ const App = () => (
             <Link to="/formatted/dates" className="nav-link">Formatted Dates</Link>
           </li>
           <li className="nav-item">
+            <Link to="/formatted/numbers" className="nav-link">Formatted Numbers</Link>
+          </li>
+          <li className="nav-item">
             <Link to="/sorting" className="nav-link">Intl.Collator</Link>
           </li>
           <li className="nav-item">
@@ -52,8 +55,12 @@ const App = () => (
           <PluralRulesPage />
         </Route>
 
-        <Route path="/formatted/dates">
+        <Route exact path="/formatted/dates">
           <FormattedDatesPage />
+        </Route>
+
+        <Route exact path="/formatted/numbers">
+          <FormattedNumbersPage />
         </Route>
 
         <Route path="/about/browser">

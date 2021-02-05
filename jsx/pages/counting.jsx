@@ -62,6 +62,7 @@ const CountingPage = () => {
   }
 
   const style = { backgroundColor: "AntiqueWhite" };
+
   return (
     <div className="mt-3">
       <div className="jumbotron pt-4 pb-4">

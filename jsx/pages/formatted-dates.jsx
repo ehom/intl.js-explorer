@@ -24,13 +24,13 @@ const FormattedDatesPage = () => {
         <h4>Formatted Dates</h4>
       </div>
       <div className="container">
-        <Examples locales={locales} />
+        <DateExamples locales={locales} />
       </div>
     </div>
   );
 };
 
-const Examples = ({ locales }) => {
+const DateExamples = ({ locales }) => {
   const today = Date.now();
   const formats = ["short", "medium", "full"];
   const labels = ["locale", ...formats];
@@ -43,7 +43,7 @@ const Examples = ({ locales }) => {
     const content = formats.map((format) => {
       return (
         <td>
-          <i18n.FormattedDate
+          <FormattedDate
             locale={locale}
             value={today}
             formatType={format}
@@ -78,35 +78,4 @@ const Examples = ({ locales }) => {
       <tbody>{output}</tbody>
     </table>
   );
-};
-
-const i18n = {
-  FormattedDate: ({ locale, formatType, value }) => {
-    const formatOptions = {
-      short: {},
-      medium: {
-        month: "short",
-        day: "numeric",
-        year: "numeric"
-      },
-      long: {
-        month: "long",
-        day: "numeric",
-        year: "numeric"
-      },
-      full: {
-        weekday: "long",
-        month: "long",
-        day: "numeric",
-        year: "numeric"
-      }
-    };
-
-    const formatted = new Intl.DateTimeFormat(
-      locale,
-      formatOptions[formatType]
-    ).format(value);
-
-    return <React.Fragment>{formatted}</React.Fragment>;
-  }
 };
