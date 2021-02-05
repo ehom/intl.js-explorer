@@ -16,12 +16,12 @@ var FormattedDatesPage = function FormattedDatesPage() {
     React.createElement(
       "div",
       { className: "container" },
-      React.createElement(Examples, { locales: locales })
+      React.createElement(DateExamples, { locales: locales })
     )
   );
 };
 
-var Examples = function Examples(_ref) {
+var DateExamples = function DateExamples(_ref) {
   var locales = _ref.locales;
 
   var today = Date.now();
@@ -44,7 +44,7 @@ var Examples = function Examples(_ref) {
       return React.createElement(
         "td",
         null,
-        React.createElement(i18n.FormattedDate, {
+        React.createElement(FormattedDate, {
           locale: locale,
           value: today,
           formatType: format
@@ -92,40 +92,4 @@ var Examples = function Examples(_ref) {
       output
     )
   );
-};
-
-var i18n = {
-  FormattedDate: function FormattedDate(_ref3) {
-    var locale = _ref3.locale,
-        formatType = _ref3.formatType,
-        value = _ref3.value;
-
-    var formatOptions = {
-      short: {},
-      medium: {
-        month: "short",
-        day: "numeric",
-        year: "numeric"
-      },
-      long: {
-        month: "long",
-        day: "numeric",
-        year: "numeric"
-      },
-      full: {
-        weekday: "long",
-        month: "long",
-        day: "numeric",
-        year: "numeric"
-      }
-    };
-
-    var formatted = new Intl.DateTimeFormat(locale, formatOptions[formatType]).format(value);
-
-    return React.createElement(
-      React.Fragment,
-      null,
-      formatted
-    );
-  }
 };

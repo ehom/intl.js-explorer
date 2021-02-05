@@ -73,6 +73,7 @@ var CountingPage = function CountingPage() {
   }
 
   var style = { backgroundColor: "AntiqueWhite" };
+
   return React.createElement(
     "div",
     { className: "mt-3" },

@@ -54,6 +54,15 @@ var App = function App() {
             { className: "nav-item" },
             React.createElement(
               Link,
+              { to: "/formatted/numbers", className: "nav-link" },
+              "Formatted Numbers"
+            )
+          ),
+          React.createElement(
+            "li",
+            { className: "nav-item" },
+            React.createElement(
+              Link,
               { to: "/sorting", className: "nav-link" },
               "Intl.Collator"
             )
@@ -116,8 +125,13 @@ var App = function App() {
         ),
         React.createElement(
           Route,
-          { path: "/formatted/dates" },
+          { exact: true, path: "/formatted/dates" },
           React.createElement(FormattedDatesPage, null)
+        ),
+        React.createElement(
+          Route,
+          { exact: true, path: "/formatted/numbers" },
+          React.createElement(FormattedNumbersPage, null)
         ),
         React.createElement(
           Route,
