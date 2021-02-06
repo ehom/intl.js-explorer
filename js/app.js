@@ -14,7 +14,7 @@ var App = function App() {
     { className: "container" },
     React.createElement(
       "nav",
-      { className: "navbar navbar-expand-lg navbar-light bg-light" },
+      { className: "navbar navbar-light bg-light" },
       React.createElement(
         "a",
         { className: "navbar-brand", href: "#" },
