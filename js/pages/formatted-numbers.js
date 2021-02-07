@@ -1,7 +1,11 @@
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var FormattedNumbersPage = function FormattedNumbersPage() {
-  var numberStyles = ["decimal", "currency", "percent", "unit"];
+  var numberStyles = ["decimal", "currency", "percent"];
+
+  if (isStyleUnitSupported()) {
+    numberStyles.push("unit");
+  }
 
   var units = ["acre", "bit", "byte", "celsius", "centimeter", "day", "degree", "fahrenheit", "fluid-ounce", "foot", "gallon", "gigabit", "gigabyte", "gram", "hectare", "hour", "inch", "kilobit", "kilobyte", "kilogram", "kilometer", "liter", "megabit", "megabyte", "meter", "mile", "mile-scandinavian", "millimeter", "milliliter", "millisecond", "minute", "month", "ounce", "percent", "petabyte", "pound", "second", "stone", "terabit", "terabyte", "week", "yard", "year"];
 
@@ -292,4 +296,15 @@ var Examples = function Examples(_ref2) {
       output
     )
   );
+};
+
+var isStyleUnitSupported = function isStyleUnitSupported() {
+  try {
+    var value = new Intl.NumberFormat(undefined, { style: "unit", unit: "acre" }).format(123);
+    console.log(value);
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
 };
