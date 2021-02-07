@@ -233,16 +233,7 @@ var InputForm = function (_React$Component3) {
   return InputForm;
 }(React.Component);
 
-var Banner = function Banner(_ref) {
+var OutputForm = function OutputForm(_ref) {
   var text = _ref.text;
-  return React.createElement(
-    "h4",
-    null,
-    text
-  );
-};
-
-var OutputForm = function OutputForm(_ref2) {
-  var text = _ref2.text;
   return React.createElement("textarea", { value: text, className: "form-control", rows: "8", readOnly: true });
 };

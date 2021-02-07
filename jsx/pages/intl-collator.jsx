@@ -158,8 +158,6 @@ class InputForm extends React.Component {
   }
 }
 
-const Banner = ({ text }) => <h4>{text}</h4>;
-
 const OutputForm = ({ text }) => (
   <textarea value={text} className="form-control" rows="8" readOnly />
 );

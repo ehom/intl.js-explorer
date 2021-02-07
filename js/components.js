@@ -1,3 +1,12 @@
+var Banner = function Banner(_ref) {
+  var text = _ref.text;
+  return React.createElement(
+    "h4",
+    null,
+    text
+  );
+};
+
 var AboutThisApp = function AboutThisApp() {
   return React.createElement(
     "div",

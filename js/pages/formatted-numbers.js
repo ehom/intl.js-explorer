@@ -108,11 +108,7 @@ var FormattedNumbersPage = function FormattedNumbersPage() {
     React.createElement(
       "div",
       { className: "jumbotron pt-4 pb-4" },
-      React.createElement(
-        "h4",
-        null,
-        "Formatted Numbers"
-      ),
+      React.createElement(Banner, { text: "Formatted Numbers" }),
       React.createElement(
         "div",
         { className: "container" },
@@ -241,12 +237,15 @@ var Examples = function Examples(_ref2) {
       currencyDisplay = _ref2.currencyDisplay;
 
   var value = 1234567890;
-  var labels = ["locale", "short", "medium", "long", "full"];
+  var labels = ["locale", "formatted number"];
+
+  // Put in css file?
+  var columnStyle = { textAlign: "center" };
 
   var header = labels.map(function (label) {
     return React.createElement(
       "th",
-      null,
+      { style: columnStyle },
       label
     );
   });
@@ -257,12 +256,12 @@ var Examples = function Examples(_ref2) {
       null,
       React.createElement(
         "td",
-        null,
+        { style: columnStyle },
         locale
       ),
       React.createElement(
         "td",
-        null,
+        { style: columnStyle },
         React.createElement(FormattedNumber, {
           value: value,
           locale: locale,
@@ -276,11 +275,17 @@ var Examples = function Examples(_ref2) {
     );
   });
 
-  var style = { backgroundColor: "AntiqueWhite" };
+  // put in css file?
+  var tableStyle = { backgroundColor: "AntiqueWhite" };
 
   return React.createElement(
     "table",
-    { className: "table table-hover table-bordered", style: style },
+    { className: "table table-hover table-bordered", style: tableStyle },
+    React.createElement(
+      "thead",
+      null,
+      header
+    ),
     React.createElement(
       "tbody",
       null,

@@ -146,7 +146,7 @@ const FormattedNumbersPage = () => {
   return (
     <div className="container mt-5">
       <div className="jumbotron pt-4 pb-4">
-        <h4>Formatted Numbers</h4>
+        <Banner text="Formatted Numbers" />
         <div className="container">
           <div className="row mb-3">
             <div className="col-4">Number Style:</div>
@@ -226,17 +226,20 @@ const Examples = ({
   currencyDisplay
 }) => {
   const value = 1234567890;
-  const labels = ["locale", "short", "medium", "long", "full"];
+  const labels = ["locale", "formatted number"];
+
+  // Put in css file?
+  const columnStyle = { textAlign: "center" };
 
   const header = labels.map((label) => {
-    return <th>{label}</th>;
+    return <th style={columnStyle}>{label}</th>;
   });
 
   const output = locales.map((locale) => {
     return (
       <tr>
-        <td>{locale}</td>
-        <td>
+        <td style={columnStyle}>{locale}</td>
+        <td style={columnStyle}>
           <FormattedNumber
             value={value}
             locale={locale}
@@ -251,10 +254,12 @@ const Examples = ({
     );
   });
 
-  const style = { backgroundColor: "AntiqueWhite" };
+  // put in css file?
+  const tableStyle = { backgroundColor: "AntiqueWhite" };
 
   return (
-    <table className="table table-hover table-bordered" style={style}>
+    <table className="table table-hover table-bordered" style={tableStyle}>
+      <thead>{header}</thead>
       <tbody>{output}</tbody>
     </table>
   );

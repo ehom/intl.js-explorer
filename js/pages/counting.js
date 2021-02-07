@@ -73,6 +73,7 @@ var CountingPage = function CountingPage() {
   }
 
   var style = { backgroundColor: "AntiqueWhite" };
+  var languages = ["en", "pl", "ja"];
 
   return React.createElement(
     "div",
@@ -103,7 +104,7 @@ var CountingPage = function CountingPage() {
           null,
           "In what language?"
         ),
-        React.createElement(ItemSelector, { items: ["en", "pl", "ja"], onChange: onLanguageChanged })
+        React.createElement(ItemSelector, { items: languages, onChange: onLanguageChanged })
       )
     ),
     React.createElement(
