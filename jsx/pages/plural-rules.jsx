@@ -49,15 +49,13 @@ const PluralRulesPage = () => {
   return (
     <div className="mt-3">
       <div className="jumbotron pt-4 pb-2">
-        <h4>Intl.PluralRules of several locales</h4>
+        <Banner text="Intl.PluralRules of several locales" />
       </div>
       <div className="container" style={style}>
         <table className="table table-hover table-responsive">
           <caption>count</caption>
           <TableHeader labels={locales} />
-          <tbody>
-          {rows}
-          </tbody>
+          <tbody>{rows}</tbody>
         </table>
       </div>
     </div>

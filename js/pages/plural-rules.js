@@ -84,11 +84,7 @@ var PluralRulesPage = function PluralRulesPage() {
     React.createElement(
       "div",
       { className: "jumbotron pt-4 pb-2" },
-      React.createElement(
-        "h4",
-        null,
-        "Intl.PluralRules of several locales"
-      )
+      React.createElement(Banner, { text: "Intl.PluralRules of several locales" })
     ),
     React.createElement(
       "div",

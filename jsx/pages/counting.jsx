@@ -62,6 +62,7 @@ const CountingPage = () => {
   }
 
   const style = { backgroundColor: "AntiqueWhite" };
+  const languages = ["en", "pl", "ja"];
 
   return (
     <div className="mt-3">
@@ -73,7 +74,7 @@ const CountingPage = () => {
         </div>
         <div className="container">
           <p>In what language?</p>
-          <ItemSelector items={["en", "pl", "ja"]} onChange={onLanguageChanged} />
+          <ItemSelector items={languages} onChange={onLanguageChanged} />
         </div>
       </div>
       <div className="container" style={style}>
