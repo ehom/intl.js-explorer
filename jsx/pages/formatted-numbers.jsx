@@ -1,5 +1,9 @@
 const FormattedNumbersPage = () => {
-  const numberStyles = ["decimal", "currency", "percent", "unit"];
+  let numberStyles = ["decimal", "currency", "percent"];
+
+  if (isStyleUnitSupported()) {
+    numberStyles.push("unit");
+  }
 
   const units = [
     "acre",
@@ -263,4 +267,16 @@ const Examples = ({
       <tbody>{output}</tbody>
     </table>
   );
+};
+
+const isStyleUnitSupported = () => {
+  try {
+    const value = new Intl.NumberFormat(undefined, {style: "unit", unit: "acre"}).format(123);
+    console.log(value);
+    return true;
+  }
+  catch(error) {
+    console.error(error);
+    return false;
+  }
 };
