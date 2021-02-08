@@ -21,7 +21,6 @@ const FormattedDatesPage = () => {
   const [dateFormats, setDateFormats] = React.useState([]);
 
   const handleApply = (formats) => {
-    console.debug("rec'd handleApply:", formats);
     setDateFormats(formats);
   };
 
@@ -58,9 +57,6 @@ const DateExamples = ({ locales, formats }) => {
 
   const labels = ["locale", ...formats];
 
-  console.debug("DateExamples:", formats);
-  console.debug("labels:", labels);
-
   const Columns = ({ locale, formats }) => {
     const content = formats.map((format) => {
       return (
@@ -68,7 +64,7 @@ const DateExamples = ({ locales, formats }) => {
           <FormattedDate
             locale={locale}
             value={today}
-            formatType={format}
+            dateStyle={format}
           />
         </td>
       );
@@ -92,9 +88,6 @@ const DateExamples = ({ locales, formats }) => {
 
   const style = { backgroundColor: "AntiqueWhite" };
 
-  console.log("render date examples");
-  console.debug("labels:", labels);
-
   return (
     <table className="table table-hover table-bordered table-responsive" style={style}>
       <thead>
@@ -114,13 +107,11 @@ const FormatDisplayControl = ({ onApply }) => {
   });
 
   const handleApply = () => {
-    console.debug("Apply checkboxes");
     const results = Object.keys(formats).filter(key => formats[key]);
     onApply(results);
   };
 
   const onClickFormat = (event) => {
-    console.debug("on Click Format:", event);
     formats[event.target.name] = !formats[event.target.name];
     setFormats(formats);
   };
@@ -176,7 +167,6 @@ const FormatDisplayControl = ({ onApply }) => {
           full
         </label>
       </div>
-
       <button type="submit" onClick={handleApply}>Apply</button>
     </div>
   );
