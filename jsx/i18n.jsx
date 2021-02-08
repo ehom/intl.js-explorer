@@ -1,28 +1,31 @@
-const FormattedDate = ({ locale, formatType, value }) => {
-  const formatOptions = {
-    short: {},
-    medium: {
-      month: "short",
-      day: "numeric",
-      year: "numeric"
-    },
-    long: {
-      month: "long",
-      day: "numeric",
-      year: "numeric"
-    },
-    full: {
-      weekday: "long",
-      month: "long",
-      day: "numeric",
-      year: "numeric"
+const FormattedDate = ({ locale, dateStyle, value }) => {
+  const [language, country] = locale.split("-");
+
+  let zones = moment.tz.zonesForCountry(country);
+  // console.debug("zones:", zones);
+
+  let timezoneOffset = new Date(value).getTimezoneOffset() / 60;
+  let timezone = undefined;
+
+  for (const zone of zones) {
+    const offset = moment.tz.zone(zone).utcOffset(value) / 60;
+    console.debug("offset:", offset);
+    console.debug("timezoneOffset:", timezoneOffset);
+    if (offset === timezoneOffset) {
+      timezone = zone;
     }
-  };
+  }
+
+  if (timezone === undefined) {
+    timezone = zones[0];
+  }
 
   const formatted = new Intl.DateTimeFormat(
-    locale,
-    formatOptions[formatType]
-  ).format(value);
+    locale, {
+      dateStyle: dateStyle,
+      timeStyle: dateStyle,
+      timeZone: timezone
+    }).format(value);
 
   return <React.Fragment>{formatted}</React.Fragment>;
 };

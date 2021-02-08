@@ -11,11 +11,8 @@ var FormattedDatesPage = function FormattedDatesPage() {
       setDateFormats = _React$useState2[1];
 
   var handleApply = function handleApply(formats) {
-    console.debug("rec'd handleApply:", formats);
     setDateFormats(formats);
   };
-
-  console.debug("refresh view");
 
   var displayControlStyle = { backgroundColor: "AntiqueWhite" };
 
@@ -69,9 +66,6 @@ var DateExamples = function DateExamples(_ref2) {
 
   var labels = ["locale"].concat(_toConsumableArray(formats));
 
-  console.debug("DateExamples:", formats);
-  console.debug("labels:", labels);
-
   var Columns = function Columns(_ref3) {
     var locale = _ref3.locale,
         formats = _ref3.formats;
@@ -83,7 +77,7 @@ var DateExamples = function DateExamples(_ref2) {
         React.createElement(FormattedDate, {
           locale: locale,
           value: today,
-          formatType: format
+          dateStyle: format
         })
       );
     });
@@ -109,9 +103,6 @@ var DateExamples = function DateExamples(_ref2) {
   });
 
   var style = { backgroundColor: "AntiqueWhite" };
-
-  console.log("render date examples");
-  console.debug("labels:", labels);
 
   return React.createElement(
     "table",
@@ -147,7 +138,6 @@ var FormatDisplayControl = function FormatDisplayControl(_ref4) {
       setFormats = _React$useState4[1];
 
   var handleApply = function handleApply() {
-    console.debug("Apply checkboxes");
     var results = Object.keys(formats).filter(function (key) {
       return formats[key];
     });
@@ -155,7 +145,6 @@ var FormatDisplayControl = function FormatDisplayControl(_ref4) {
   };
 
   var onClickFormat = function onClickFormat(event) {
-    console.debug("on Click Format:", event);
     formats[event.target.name] = !formats[event.target.name];
     setFormats(formats);
   };
