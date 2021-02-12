@@ -102,20 +102,24 @@ var IntljsSupportPage = function (_React$Component) {
         { className: "mt-3" },
         React.createElement(
           "div",
-          { className: "jumbotron pt-4 pb-4" },
+          { className: "jumbotron pt-4 pb-2" },
           React.createElement(
             "h4",
-            { className: "pb-3" },
+            null,
             "This browser"
-          ),
+          )
+        ),
+        React.createElement(
+          "div",
+          { className: "container-fluid pt-2 pb-2 mb-2", style: style },
           React.createElement(
             "div",
-            { className: "container mb-4" },
+            { className: "mb-1" },
             React.createElement(BrowserInfo, null)
           ),
           React.createElement(
             "div",
-            { className: "container" },
+            null,
             React.createElement(UILanguages, null)
           )
         ),
