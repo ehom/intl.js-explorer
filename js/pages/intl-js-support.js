@@ -106,9 +106,18 @@ var IntljsSupportPage = function (_React$Component) {
           React.createElement(
             "h4",
             { className: "pb-3" },
-            "Intl.js support in this browser"
+            "This browser"
           ),
-          React.createElement(BrowserInfo, null)
+          React.createElement(
+            "div",
+            { className: "container mb-4" },
+            React.createElement(BrowserInfo, null)
+          ),
+          React.createElement(
+            "div",
+            { className: "container" },
+            React.createElement(UILanguages, null)
+          )
         ),
         React.createElement(
           "div",
@@ -204,19 +213,12 @@ function IntlJsSupport(_ref) {
 }
 
 function BrowserInfo() {
-  var content = getTokens(navigator.userAgent).map(function (token) {
-    return React.createElement(
-      "span",
-      { className: "pt-1 pb-1 pl-2 pr-2 mr-1 rounded border border-info" },
-      token,
-      " "
-    );
-  });
+  var content = getTokens(navigator.userAgent);
 
   return React.createElement(
-    "div",
+    React.Fragment,
     null,
-    content
+    React.createElement(Highlight, { items: content })
   );
 }
 
@@ -267,3 +269,30 @@ function getTokens(s) {
   }
   return tokens;
 }
+
+function Highlight(_ref3) {
+  var items = _ref3.items;
+
+  var output = items.map(function (item) {
+    return React.createElement(
+      "span",
+      { className: "locale-highlight border border-info pl-2 pr-2 mr-2 bg-light" },
+      item
+    );
+  });
+  return React.createElement(
+    React.Fragment,
+    null,
+    output
+  );
+}
+
+function UILanguages() {
+  var locales = Intl.getCanonicalLocales(navigator.languages);
+
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(Highlight, { items: locales })
+  );
+};
