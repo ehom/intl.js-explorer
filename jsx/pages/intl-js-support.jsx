@@ -40,8 +40,13 @@ class IntljsSupportPage extends React.Component {
     return (
       <div className="mt-3">
         <div className="jumbotron pt-4 pb-4">
-          <h4 className="pb-3">Intl.js support in this browser</h4>
-          <BrowserInfo />
+          <h4 className="pb-3">This browser</h4>
+          <div className="container mb-4">
+            <BrowserInfo />
+          </div>
+          <div className="container">
+            <UILanguages />
+          </div>
         </div>
         <div className="container" style={style}>
           <IntlJsSupport data={this.state.intljs} />
@@ -99,16 +104,10 @@ function IntlJsSupport({ data }) {
 }
 
 function BrowserInfo() {
-  const content = getTokens(navigator.userAgent).map(token => {
-    return (
-      <span className="pt-1 pb-1 pl-2 pr-2 mr-1 rounded border border-info">{token}&#32;</span>
-    );
-  });
+  const content = getTokens(navigator.userAgent);
 
   return (
-    <div>
-      {content}
-    </div>
+    <React.Fragment><Highlight items={content} /></React.Fragment>
   );
 }
 
@@ -150,3 +149,16 @@ function getTokens(s) {
   }
   return tokens;
 }
+
+function Highlight({items}) {
+  const output = items.map((item) => (
+    <span className="locale-highlight border border-info pl-2 pr-2 mr-2 bg-light">{item}</span>
+  ));
+  return <React.Fragment>{output}</React.Fragment>;
+}
+
+function UILanguages() {
+  const locales = Intl.getCanonicalLocales(navigator.languages);
+
+  return <React.Fragment><Highlight items={locales} /></React.Fragment>;
+};
