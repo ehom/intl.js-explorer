@@ -39,15 +39,19 @@ class IntljsSupportPage extends React.Component {
 
     return (
       <div className="mt-3">
-        <div className="jumbotron pt-4 pb-4">
-          <h4 className="pb-3">This browser</h4>
-          <div className="container mb-4">
+        <div className="jumbotron pt-4 pb-2">
+          <h4>This browser</h4>
+        </div>
+
+        <div className="container-fluid pt-2 pb-2 mb-2" style={style}>
+          <div className="mb-1">
             <BrowserInfo />
           </div>
-          <div className="container">
+          <div>
             <UILanguages />
           </div>
         </div>
+
         <div className="container" style={style}>
           <IntlJsSupport data={this.state.intljs} />
         </div>
