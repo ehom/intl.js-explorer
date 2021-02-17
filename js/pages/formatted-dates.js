@@ -3,7 +3,7 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var FormattedDatesPage = function FormattedDatesPage() {
-  var locales = ["en-US", "en-GB", "fr-FR", "fr-CA", "fr-CH", "it-IT", "de-DE", "zh-CN", "zh-HK", "zh-TW", "ja-JP", "ko-KR", "es-ES", "es-MX", "pt-BR", "pt-PT"];
+  var locales = ["en-US", "en-GB", "fr-FR", "fr-CA", "fr-CH", "it-IT", "de-DE", "da-DK", "zh-CN", "zh-HK", "zh-TW", "ja-JP", "ko-KR", "es-ES", "es-MX", "pt-BR", "pt-PT"];
 
   var _React$useState = React.useState([]),
       _React$useState2 = _slicedToArray(_React$useState, 2),
