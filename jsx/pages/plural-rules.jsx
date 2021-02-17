@@ -34,9 +34,7 @@ const PluralRulesPage = () => {
         );
       }
       return (
-        <React.Fragment>
-          <td className={f.select(count)}>{f.select(count)}</td>
-        </React.Fragment>
+        <td className={f.select(count)}>{f.select(count)}</td>
       );
     });
     return (
