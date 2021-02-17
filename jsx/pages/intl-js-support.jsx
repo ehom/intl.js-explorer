@@ -5,12 +5,12 @@ const isSupported = (functionName) => {
 };
 
 class IntljsSupportPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      intljs: {},
-      nodejs: {}
-    }
+  state = {
+    intljs: {},
+    nodejs: {}
+  }
+
+  componentDidMount() {
     fetch("https://raw.githubusercontent.com/ehom/nodejs-intl/main/intljs.json")
     .then((response) => response.json())
     .then((data) => {
@@ -26,7 +26,9 @@ class IntljsSupportPage extends React.Component {
       for (const key of Object.keys(intljsInfo)) {
         intljsInfo[key].browser = isSupported(key);
       }
+
       console.debug("updated: ", intljsInfo);
+
       this.setState({
         intljs: intljsInfo,
         nodejs: nodejsInfo
@@ -41,13 +43,13 @@ class IntljsSupportPage extends React.Component {
       <div className="mt-3">
         <div className="jumbotron pt-4 pb-2">
           <h4>This browser</h4>
+          <div className="mb-1">
+            <BrowserInfo />
+          </div>
         </div>
 
         <div className="container-fluid pt-2 pb-2 mb-2" style={style}>
           <div className="mb-1">
-            <BrowserInfo />
-          </div>
-          <div>
             <UILanguages />
           </div>
         </div>
@@ -108,7 +110,17 @@ function IntlJsSupport({ data }) {
 }
 
 function BrowserInfo() {
-  const content = getTokens(navigator.userAgent);
+  let content = getTokens(navigator.userAgent);
+
+  if (navigator.vendor.length === 0) {
+    content.splice(0, content.length - 1);
+  } else if (navigator.vendor.includes("Apple")) {
+    content.splice(0, content.length - 1);
+  } else if (navigator.brave && navigator.brave.isBrave) {
+    content = ["Brave"];
+  } else if (navigator.vendor.includes("Google")) {
+    content.splice(0, content.length - 2);
+  }
 
   return (
     <React.Fragment><Highlight items={content} /></React.Fragment>
@@ -162,7 +174,8 @@ function Highlight({items}) {
 }
 
 function UILanguages() {
-  const locales = Intl.getCanonicalLocales(navigator.languages);
+  // const locales = Intl.getCanonicalLocales(navigator.languages);
+  const locales = Intl.getCanonicalLocales(navigator.language);
 
   return <React.Fragment><Highlight items={locales} /></React.Fragment>;
 };

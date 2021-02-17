@@ -15,84 +15,96 @@ var isSupported = function isSupported(functionName) {
 var IntljsSupportPage = function (_React$Component) {
   _inherits(IntljsSupportPage, _React$Component);
 
-  function IntljsSupportPage(props) {
+  function IntljsSupportPage() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, IntljsSupportPage);
 
-    var _this = _possibleConstructorReturn(this, (IntljsSupportPage.__proto__ || Object.getPrototypeOf(IntljsSupportPage)).call(this, props));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this.state = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = IntljsSupportPage.__proto__ || Object.getPrototypeOf(IntljsSupportPage)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       intljs: {},
       nodejs: {}
-    };
-    fetch("https://raw.githubusercontent.com/ehom/nodejs-intl/main/intljs.json").then(function (response) {
-      return response.json();
-    }).then(function (data) {
-      console.debug("nodejs:", data);
-
-      intljsInfo = {};
-      nodejsInfo = {};
-
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        for (var _iterator = data["Intl.js"][Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var name = _step.value;
-
-          intljsInfo[name] = { browser: false, nodejs: true };
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
-      }
-
-      nodejsInfo["version"] = data["Node.js"].version;
-      var _iteratorNormalCompletion2 = true;
-      var _didIteratorError2 = false;
-      var _iteratorError2 = undefined;
-
-      try {
-        for (var _iterator2 = Object.keys(intljsInfo)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-          var key = _step2.value;
-
-          intljsInfo[key].browser = isSupported(key);
-        }
-      } catch (err) {
-        _didIteratorError2 = true;
-        _iteratorError2 = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return) {
-            _iterator2.return();
-          }
-        } finally {
-          if (_didIteratorError2) {
-            throw _iteratorError2;
-          }
-        }
-      }
-
-      console.debug("updated: ", intljsInfo);
-      _this.setState({
-        intljs: intljsInfo,
-        nodejs: nodejsInfo
-      });
-    });
-    return _this;
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(IntljsSupportPage, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("https://raw.githubusercontent.com/ehom/nodejs-intl/main/intljs.json").then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        console.debug("nodejs:", data);
+
+        intljsInfo = {};
+        nodejsInfo = {};
+
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = data["Intl.js"][Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var name = _step.value;
+
+            intljsInfo[name] = { browser: false, nodejs: true };
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+
+        nodejsInfo["version"] = data["Node.js"].version;
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
+
+        try {
+          for (var _iterator2 = Object.keys(intljsInfo)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var key = _step2.value;
+
+            intljsInfo[key].browser = isSupported(key);
+          }
+        } catch (err) {
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+              _iterator2.return();
+            }
+          } finally {
+            if (_didIteratorError2) {
+              throw _iteratorError2;
+            }
+          }
+        }
+
+        console.debug("updated: ", intljsInfo);
+
+        _this2.setState({
+          intljs: intljsInfo,
+          nodejs: nodejsInfo
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var style = { backgroundColor: "AntiqueWhite" };
@@ -107,6 +119,11 @@ var IntljsSupportPage = function (_React$Component) {
             "h4",
             null,
             "This browser"
+          ),
+          React.createElement(
+            "div",
+            { className: "mb-1" },
+            React.createElement(BrowserInfo, null)
           )
         ),
         React.createElement(
@@ -115,11 +132,6 @@ var IntljsSupportPage = function (_React$Component) {
           React.createElement(
             "div",
             { className: "mb-1" },
-            React.createElement(BrowserInfo, null)
-          ),
-          React.createElement(
-            "div",
-            null,
             React.createElement(UILanguages, null)
           )
         ),
@@ -153,8 +165,8 @@ function FunctionLink(props) {
   );
 }
 
-function IntlJsSupport(_ref) {
-  var data = _ref.data;
+function IntlJsSupport(_ref2) {
+  var data = _ref2.data;
 
   var functionNames = Object.keys(data).sort();
 
@@ -219,6 +231,16 @@ function IntlJsSupport(_ref) {
 function BrowserInfo() {
   var content = getTokens(navigator.userAgent);
 
+  if (navigator.vendor.length === 0) {
+    content.splice(0, content.length - 1);
+  } else if (navigator.vendor.includes("Apple")) {
+    content.splice(0, content.length - 1);
+  } else if (navigator.brave && navigator.brave.isBrave) {
+    content = ["Brave"];
+  } else if (navigator.vendor.includes("Google")) {
+    content.splice(0, content.length - 2);
+  }
+
   return React.createElement(
     React.Fragment,
     null,
@@ -226,8 +248,8 @@ function BrowserInfo() {
   );
 }
 
-function NodejsInfo(_ref2) {
-  var version = _ref2.version;
+function NodejsInfo(_ref3) {
+  var version = _ref3.version;
 
   return React.createElement(
     "p",
@@ -274,8 +296,8 @@ function getTokens(s) {
   return tokens;
 }
 
-function Highlight(_ref3) {
-  var items = _ref3.items;
+function Highlight(_ref4) {
+  var items = _ref4.items;
 
   var output = items.map(function (item) {
     return React.createElement(
@@ -292,7 +314,8 @@ function Highlight(_ref3) {
 }
 
 function UILanguages() {
-  var locales = Intl.getCanonicalLocales(navigator.languages);
+  // const locales = Intl.getCanonicalLocales(navigator.languages);
+  var locales = Intl.getCanonicalLocales(navigator.language);
 
   return React.createElement(
     React.Fragment,
