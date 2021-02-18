@@ -91,7 +91,7 @@ var App = function App() {
             React.createElement(
               Link,
               { to: "/about", className: "nav-link" },
-              "This App"
+              "About This App"
             )
           )
         )

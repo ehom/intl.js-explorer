@@ -31,7 +31,7 @@ const App = () => (
             <Link to="/counting" className="nav-link">Counting</Link>
           </li>
           <li className="nav-item">
-            <Link to="/about" className="nav-link">This App</Link>
+            <Link to="/about" className="nav-link">About This App</Link>
           </li>
         </ul>
       </div>
