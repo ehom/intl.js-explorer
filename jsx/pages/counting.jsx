@@ -47,9 +47,12 @@ const strings = {
 
 const CountingPage = () => {
   const objects = ["apples", "moose", "mice"];
-  
-  let [item, setItem] = React.useState(objects[0]);
-  let [lang, setLang] = React.useState('en');
+  const languages = ["en", "pl", "ja"];
+
+  let [defaultObject] = objects;
+  let [defaultLanguage] = languages;
+  let [item, setItem] = React.useState(defaultObject);
+  let [lang, setLang] = React.useState(defaultLanguage);
   
   function onLanguageChanged(event) {
     // console.debug("App handleChange:", event.target.value);
@@ -62,18 +65,19 @@ const CountingPage = () => {
   }
 
   const style = { backgroundColor: "AntiqueWhite" };
-  const languages = ["en", "pl", "ja"];
 
   return (
     <div className="mt-3">
       <div className="jumbotron pt-4 pb-4">
         <h4>Counting in different languages</h4>
-        <div className="container mb-3">
-          <p>What do you want to count?</p>
-          <ItemSelector items={["apples", "moose", "mice"]} onChange={onItemChanged} />
+        <div className="container mb-2">
+          <div>What do you want to count?</div>
+          <div>
+            <ItemSelector items={objects} onChange={onItemChanged} />
+          </div>
         </div>
-        <div className="container">
-          <p>In what language?</p>
+        <div className="container mb-2">
+          <div>In what language?</div>
           <ItemSelector items={languages} onChange={onLanguageChanged} />
         </div>
       </div>

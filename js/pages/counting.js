@@ -51,13 +51,17 @@ var strings = {
 
 var CountingPage = function CountingPage() {
   var objects = ["apples", "moose", "mice"];
+  var languages = ["en", "pl", "ja"];
 
-  var _React$useState = React.useState(objects[0]),
+  var defaultObject = objects[0];
+  var defaultLanguage = languages[0];
+
+  var _React$useState = React.useState(defaultObject),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       item = _React$useState2[0],
       setItem = _React$useState2[1];
 
-  var _React$useState3 = React.useState('en'),
+  var _React$useState3 = React.useState(defaultLanguage),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       lang = _React$useState4[0],
       setLang = _React$useState4[1];
@@ -73,7 +77,6 @@ var CountingPage = function CountingPage() {
   }
 
   var style = { backgroundColor: "AntiqueWhite" };
-  var languages = ["en", "pl", "ja"];
 
   return React.createElement(
     "div",
@@ -88,19 +91,23 @@ var CountingPage = function CountingPage() {
       ),
       React.createElement(
         "div",
-        { className: "container mb-3" },
+        { className: "container mb-2" },
         React.createElement(
-          "p",
+          "div",
           null,
           "What do you want to count?"
         ),
-        React.createElement(ItemSelector, { items: ["apples", "moose", "mice"], onChange: onItemChanged })
+        React.createElement(
+          "div",
+          null,
+          React.createElement(ItemSelector, { items: objects, onChange: onItemChanged })
+        )
       ),
       React.createElement(
         "div",
-        { className: "container" },
+        { className: "container mb-2" },
         React.createElement(
-          "p",
+          "div",
           null,
           "In what language?"
         ),
