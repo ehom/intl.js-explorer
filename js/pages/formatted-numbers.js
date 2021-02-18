@@ -15,7 +15,13 @@ var FormattedNumbersPage = function FormattedNumbersPage() {
 
   var currencies = ["USD", "CAD", "GBP", "EUR", "JPY", "HKD", "CNY", "KRW", "BRL", "TRY"];
 
-  var currencyDisplays = ["symbol", "narrowSymbol", "code", "name"];
+  var currencyDisplays = ["symbol", "code", "name"];
+
+  if (isNarrowSymbolSupported()) {
+    currencyDisplays.push("narrowSymbol");
+  }
+
+  console.debug(currencyDisplays);
 
   var defaultUnit = units[0];
   var defaultUnitDisplay = unitDisplays[0];
@@ -301,6 +307,22 @@ var Examples = function Examples(_ref2) {
 var isStyleUnitSupported = function isStyleUnitSupported() {
   try {
     var value = new Intl.NumberFormat(undefined, { style: "unit", unit: "acre" }).format(123);
+    console.log(value);
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
+
+var isNarrowSymbolSupported = function isNarrowSymbolSupported() {
+  try {
+    var value = new Intl.NumberFormat(undefined, {
+      style: "currency",
+      currency: 'USD',
+      currencyDisplay: "narrowSymbol"
+    }).format(123);
+
     console.log(value);
     return true;
   } catch (error) {
