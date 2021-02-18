@@ -3,9 +3,29 @@ var FormattedDate = function FormattedDate(_ref) {
       dateStyle = _ref.dateStyle,
       value = _ref.value;
 
-  var formatted = new Intl.DateTimeFormat(locale, {
-    dateStyle: dateStyle
-  }).format(value);
+  var formatOptions = {
+    short: {},
+    medium: {
+      month: "short",
+      day: "numeric",
+      year: "numeric"
+    },
+    long: {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    },
+    full: {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    }
+  };
+
+  // dateStyle is still not supported on some mobile browsers
+
+  var formatted = new Intl.DateTimeFormat(locale, formatOptions[dateStyle]).format(value);
 
   return React.createElement(
     React.Fragment,
