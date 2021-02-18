@@ -124,54 +124,39 @@ var FormattedNumbersPage = function FormattedNumbersPage() {
         { className: "container" },
         React.createElement(
           "div",
-          { className: "row mb-3" },
-          React.createElement(
-            "div",
-            { className: "col-4" },
-            "Number Style:"
-          ),
-          React.createElement(
-            "div",
-            { className: "col-5" },
-            React.createElement(ItemSelector, {
-              items: numberStyles,
-              onChange: handleNumberStyleChange
-            })
-          )
+          null,
+          "Number Style:"
+        ),
+        React.createElement(
+          "div",
+          { className: "mb-3" },
+          React.createElement(ItemSelector, { items: numberStyles, onChange: handleNumberStyleChange })
         ),
         React.createElement(
           "div",
           { style: { display: currencyUI }, className: "mb-3" },
           React.createElement(
             "div",
-            { className: "row mb-1" },
-            React.createElement(
-              "div",
-              { className: "col-4" },
-              "Currency:"
-            ),
-            React.createElement(
-              "div",
-              { className: "col-5" },
-              React.createElement(ItemSelector, { items: currencies, onChange: handleCurrencyChange })
-            )
+            null,
+            "Currency:"
           ),
           React.createElement(
             "div",
-            { className: "row mb-1" },
-            React.createElement(
-              "div",
-              { className: "col-4" },
-              "Currency Display:"
-            ),
-            React.createElement(
-              "div",
-              { className: "col-5" },
-              React.createElement(ItemSelector, {
-                items: currencyDisplays,
-                onChange: handleCurrencyDisplayChange
-              })
-            )
+            { className: "mb-2" },
+            React.createElement(ItemSelector, { items: currencies, onChange: handleCurrencyChange })
+          ),
+          React.createElement(
+            "div",
+            null,
+            "Currency Display:"
+          ),
+          React.createElement(
+            "div",
+            null,
+            React.createElement(ItemSelector, {
+              items: currencyDisplays,
+              onChange: handleCurrencyDisplayChange
+            })
           )
         ),
         React.createElement(
@@ -179,31 +164,23 @@ var FormattedNumbersPage = function FormattedNumbersPage() {
           { style: { display: unitUI }, className: "mb-3" },
           React.createElement(
             "div",
-            { className: "row mb-1" },
-            React.createElement(
-              "div",
-              { className: "col-4" },
-              "Unit:"
-            ),
-            React.createElement(
-              "div",
-              { className: "col-5" },
-              React.createElement(ItemSelector, { items: units, onChange: handleUnitChange })
-            )
+            null,
+            "Unit:"
           ),
           React.createElement(
             "div",
-            { className: "row mb-1" },
-            React.createElement(
-              "div",
-              { className: "col-4" },
-              "Unit Display:"
-            ),
-            React.createElement(
-              "div",
-              { className: "col-5" },
-              React.createElement(ItemSelector, { items: unitDisplays, onChange: handleUnitDisplayChange })
-            )
+            { className: "mb-2" },
+            React.createElement(ItemSelector, { items: units, onChange: handleUnitChange })
+          ),
+          React.createElement(
+            "div",
+            null,
+            "Unit Display:"
+          ),
+          React.createElement(
+            "div",
+            null,
+            React.createElement(ItemSelector, { items: unitDisplays, onChange: handleUnitDisplayChange })
           )
         )
       )

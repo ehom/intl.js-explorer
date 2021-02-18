@@ -157,50 +157,41 @@ const FormattedNumbersPage = () => {
     <div className="container mt-5">
       <div className="jumbotron pt-4 pb-4">
         <Banner text="Formatted Numbers" />
+
         <div className="container">
-          <div className="row mb-3">
-            <div className="col-4">Number Style:</div>
-            <div className="col-5">
-              <ItemSelector
-                items={numberStyles}
-                onChange={handleNumberStyleChange}
-              />
-            </div>
+
+          <div>Number Style:</div>
+          <div className="mb-3">
+            <ItemSelector items={numberStyles} onChange={handleNumberStyleChange} />
           </div>
       
           <div style={{display: currencyUI}} className="mb-3">
-            <div className="row mb-1">
-              <div className="col-4">Currency:</div>
-              <div className="col-5">
-                <ItemSelector items={currencies} onChange={handleCurrencyChange} />
-              </div>
+            <div>Currency:</div>
+            <div className="mb-2">
+              <ItemSelector items={currencies} onChange={handleCurrencyChange} />
             </div>
-            <div className="row mb-1">
-              <div className="col-4">Currency Display:</div>
-              <div className="col-5">
+            <div>Currency Display:</div>
+            <div>
                 <ItemSelector
                   items={currencyDisplays}
                   onChange={handleCurrencyDisplayChange}
                 />
-              </div>
             </div>
           </div>
       
           <div style={{display: unitUI}} className="mb-3">
-            <div className="row mb-1">
-              <div className="col-4">Unit:</div>
-              <div className="col-5">
-                <ItemSelector items={units} onChange={handleUnitChange} />
-              </div>
+            <div>Unit:</div>
+            <div className="mb-2">
+              <ItemSelector items={units} onChange={handleUnitChange} />
             </div>
-              <div className="row mb-1">
-              <div className="col-4">Unit Display:</div>
-              <div className="col-5">
-                <ItemSelector items={unitDisplays} onChange={handleUnitDisplayChange} />
-              </div>
-            </div> 
+            <div>Unit Display:</div>
+            <div>
+              <ItemSelector items={unitDisplays} onChange={handleUnitDisplayChange} />
+            </div>
           </div>
+
         </div>
+
       </div>
  
       <Examples
