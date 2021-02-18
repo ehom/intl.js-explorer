@@ -78,7 +78,13 @@ const FormattedNumbersPage = () => {
 
   const currencies = ["USD", "CAD", "GBP", "EUR", "JPY", "HKD", "CNY", "KRW", "BRL", "TRY"];
 
-  const currencyDisplays = ["symbol", "narrowSymbol", "code", "name"];
+  let currencyDisplays = ["symbol", "code", "name"];
+
+  if (isNarrowSymbolSupported()) {
+    currencyDisplays.push("narrowSymbol");
+  }
+
+  console.debug(currencyDisplays);
 
   const [defaultUnit] = units;
   const [defaultUnitDisplay] = unitDisplays;
@@ -272,6 +278,23 @@ const Examples = ({
 const isStyleUnitSupported = () => {
   try {
     const value = new Intl.NumberFormat(undefined, {style: "unit", unit: "acre"}).format(123);
+    console.log(value);
+    return true;
+  }
+  catch(error) {
+    console.error(error);
+    return false;
+  }
+};
+
+const isNarrowSymbolSupported = () => {
+  try {
+    const value = new Intl.NumberFormat(undefined, {
+      style: "currency",
+      currency: 'USD',
+      currencyDisplay: "narrowSymbol"
+    }).format(123);
+
     console.log(value);
     return true;
   }
