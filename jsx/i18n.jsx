@@ -1,8 +1,29 @@
 const FormattedDate = ({ locale, dateStyle, value }) => {
+  const formatOptions = {
+    short: {},
+    medium: {
+      month: "short",
+      day: "numeric",
+      year: "numeric"
+    },
+    long: {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    },
+    full: {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    }
+  };
+
+  // dateStyle is still not supported on Safari
+
   const formatted = new Intl.DateTimeFormat(
-    locale, {
-      dateStyle: dateStyle,
-    }).format(value);
+    locale, formatOptions[dateStyle]
+    ).format(value);
 
   return <React.Fragment>{formatted}</React.Fragment>;
 };
