@@ -47,7 +47,7 @@ var TableHeader = function TableHeader(_ref) {
   var header = labels.map(function (label) {
     return React.createElement(
       "th",
-      null,
+      { className: "text-right" },
       label
     );
   });
