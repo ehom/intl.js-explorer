@@ -48,7 +48,7 @@ const FormattedDatesPage = () => {
 
 const TableHeader = ({labels}) => {
   const header = labels.map((label) => {
-    return <th>{label}</th>;
+    return <th className="text-right">{label}</th>;
   });
   return <React.Fragment>{header}</React.Fragment>;
 };

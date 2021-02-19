@@ -4,28 +4,55 @@ var FormattedDate = function FormattedDate(_ref) {
       value = _ref.value;
 
   var formatOptions = {
-    short: {},
+    short: {
+      month: "numeric",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric"
+    },
     medium: {
       month: "short",
       day: "numeric",
-      year: "numeric"
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric"
     },
     long: {
       month: "long",
       day: "numeric",
-      year: "numeric"
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      timeZone: "UTC",
+      timeZoneName: "short"
     },
     full: {
       weekday: "long",
       month: "long",
       day: "numeric",
-      year: "numeric"
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      timeZone: "UTC",
+      timeZoneName: "long"
     }
   };
 
-  // dateStyle is still not supported on some mobile browsers
+  // dateStyle and timeStyle are not supported on Safari (yet?)
 
-  var formatted = new Intl.DateTimeFormat(locale, formatOptions[dateStyle]).format(value);
+  /* Maybe provide a page that uses custom date/time formatting?
+  const formatted = new Intl.DateTimeFormat(
+    locale, formatOptions[dateStyle]
+    ).format(value);
+  */
+
+  var formatted = new Intl.DateTimeFormat(locale, {
+    dateStyle: dateStyle, timeStyle: dateStyle
+  }).format(value);
 
   return React.createElement(
     React.Fragment,
