@@ -30,7 +30,7 @@ const FormattedDatesPage = () => {
   return (
     <div className="container mt-3">
       <div className="jumbotron pt-4 pb-2">
-        <Banner text="Formatted Dates" />
+        <Banner text="Formatted Dates and Times" />
       </div>
 
       <div className="container mb-2">
@@ -62,10 +62,10 @@ const DateExamples = ({ locales, formats }) => {
     const content = formats.map((format) => {
       return (
         <td>
-          <FormattedDate
+          <i18n.FormattedDateTime
             locale={locale}
             value={today}
-            dateStyle={format}
+            style={format}
           />
         </td>
       );
@@ -119,7 +119,7 @@ const FormatDisplayControl = ({ onApply }) => {
 
   return (
     <div className="container">
-      <h4>Date Formats:</h4>
+      <h4>Formats:</h4>
 
       <div className="form-check form-check-inline mb-2">
         <label className="form-check-label mr-2">

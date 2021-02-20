@@ -22,7 +22,7 @@ var FormattedDatesPage = function FormattedDatesPage() {
     React.createElement(
       "div",
       { className: "jumbotron pt-4 pb-2" },
-      React.createElement(Banner, { text: "Formatted Dates" })
+      React.createElement(Banner, { text: "Formatted Dates and Times" })
     ),
     React.createElement(
       "div",
@@ -74,10 +74,10 @@ var DateExamples = function DateExamples(_ref2) {
       return React.createElement(
         "td",
         null,
-        React.createElement(FormattedDate, {
+        React.createElement(i18n.FormattedDateTime, {
           locale: locale,
           value: today,
-          dateStyle: format
+          style: format
         })
       );
     });
@@ -155,7 +155,7 @@ var FormatDisplayControl = function FormatDisplayControl(_ref4) {
     React.createElement(
       "h4",
       null,
-      "Date Formats:"
+      "Formats:"
     ),
     React.createElement(
       "div",

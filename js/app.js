@@ -46,7 +46,7 @@ var App = function App() {
             React.createElement(
               Link,
               { to: "/formatted/dates", className: "nav-link" },
-              "Formatted Dates"
+              "Formatted Dates and Times"
             )
           ),
           React.createElement(

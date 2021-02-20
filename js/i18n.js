@@ -1,6 +1,8 @@
-var FormattedDate = function FormattedDate(_ref) {
+var i18n = i18n || {};
+
+i18n.FormattedDateTime = function (_ref) {
   var locale = _ref.locale,
-      dateStyle = _ref.dateStyle,
+      style = _ref.style,
       value = _ref.value;
 
   var formatOptions = {
@@ -51,7 +53,7 @@ var FormattedDate = function FormattedDate(_ref) {
   */
 
   var formatted = new Intl.DateTimeFormat(locale, {
-    dateStyle: dateStyle, timeStyle: dateStyle
+    dateStyle: style, timeStyle: style
   }).format(value);
 
   return React.createElement(
