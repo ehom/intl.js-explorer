@@ -1,4 +1,6 @@
-const FormattedDate = ({ locale, dateStyle, value }) => {
+var i18n = i18n || {};
+
+i18n.FormattedDateTime = ({ locale, style, value }) => {
   const formatOptions = {
     short: {
       month: "numeric",
@@ -47,7 +49,7 @@ const FormattedDate = ({ locale, dateStyle, value }) => {
   */
 
   const formatted = new Intl.DateTimeFormat(locale, {
-    dateStyle: dateStyle, timeStyle: dateStyle
+    dateStyle: style, timeStyle: style
   }).format(value);
 
   return <React.Fragment>{formatted}</React.Fragment>;
