@@ -123,16 +123,8 @@ var IntljsSupportPage = function (_React$Component) {
           React.createElement(
             "div",
             { className: "mb-1" },
+            React.createElement(UILanguages, null),
             React.createElement(BrowserInfo, null)
-          )
-        ),
-        React.createElement(
-          "div",
-          { className: "container-fluid pt-2 pb-2 mb-2", style: style },
-          React.createElement(
-            "div",
-            { className: "mb-1" },
-            React.createElement(UILanguages, null)
           )
         ),
         React.createElement(
@@ -229,22 +221,20 @@ function IntlJsSupport(_ref2) {
 }
 
 function BrowserInfo() {
-  var content = getTokens(navigator.userAgent);
+  var tokens = getTokens(navigator.userAgent);
 
-  if (navigator.vendor.length === 0) {
-    content.splice(0, content.length - 1);
-  } else if (navigator.vendor.includes("Apple")) {
-    content.splice(0, content.length - 1);
-  } else if (navigator.brave && navigator.brave.isBrave) {
-    content = ["Brave"];
-  } else if (navigator.vendor.includes("Google")) {
-    content.splice(0, content.length - 2);
-  }
+  var pills = tokens.map(function (token) {
+    return React.createElement(
+      "span",
+      { className: "badge badge-info mr-1" },
+      token
+    );
+  });
 
   return React.createElement(
     React.Fragment,
     null,
-    React.createElement(Highlight, { items: content })
+    pills
   );
 }
 
@@ -296,30 +286,13 @@ function getTokens(s) {
   return tokens;
 }
 
-function Highlight(_ref4) {
-  var items = _ref4.items;
-
-  var output = items.map(function (item) {
-    return React.createElement(
-      "span",
-      { className: "locale-highlight border border-info pl-2 pr-2 mr-2 bg-light" },
-      item
-    );
-  });
-  return React.createElement(
-    React.Fragment,
-    null,
-    output
-  );
-}
-
 function UILanguages() {
   // const locales = Intl.getCanonicalLocales(navigator.languages);
-  var locales = Intl.getCanonicalLocales(navigator.language);
+  var locale = Intl.getCanonicalLocales(navigator.language);
 
   return React.createElement(
-    React.Fragment,
-    null,
-    React.createElement(Highlight, { items: locales })
+    "span",
+    { className: "badge badge-pill badge-primary mr-2" },
+    locale
   );
 };

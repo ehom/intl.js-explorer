@@ -22,6 +22,7 @@ class IntljsSupportPage extends React.Component {
       for (const name of data["Intl.js"]) {
         intljsInfo[name] = { browser: false, nodejs: true };
       }
+
       nodejsInfo["version"] = data["Node.js"].version;
       for (const key of Object.keys(intljsInfo)) {
         intljsInfo[key].browser = isSupported(key);
@@ -44,13 +45,8 @@ class IntljsSupportPage extends React.Component {
         <div className="jumbotron pt-4 pb-2">
           <h4>This browser</h4>
           <div className="mb-1">
-            <BrowserInfo />
-          </div>
-        </div>
-
-        <div className="container-fluid pt-2 pb-2 mb-2" style={style}>
-          <div className="mb-1">
             <UILanguages />
+            <BrowserInfo />
           </div>
         </div>
 
@@ -110,20 +106,14 @@ function IntlJsSupport({ data }) {
 }
 
 function BrowserInfo() {
-  let content = getTokens(navigator.userAgent);
+  let tokens = getTokens(navigator.userAgent);
 
-  if (navigator.vendor.length === 0) {
-    content.splice(0, content.length - 1);
-  } else if (navigator.vendor.includes("Apple")) {
-    content.splice(0, content.length - 1);
-  } else if (navigator.brave && navigator.brave.isBrave) {
-    content = ["Brave"];
-  } else if (navigator.vendor.includes("Google")) {
-    content.splice(0, content.length - 2);
-  }
-
+  const pills = tokens.map(token => {
+    return <span className="badge badge-info mr-1">{token}</span>;
+  });
+  
   return (
-    <React.Fragment><Highlight items={content} /></React.Fragment>
+    <React.Fragment>{pills}</React.Fragment>
   );
 }
 
@@ -166,16 +156,9 @@ function getTokens(s) {
   return tokens;
 }
 
-function Highlight({items}) {
-  const output = items.map((item) => (
-    <span className="locale-highlight border border-info pl-2 pr-2 mr-2 bg-light">{item}</span>
-  ));
-  return <React.Fragment>{output}</React.Fragment>;
-}
-
 function UILanguages() {
   // const locales = Intl.getCanonicalLocales(navigator.languages);
-  const locales = Intl.getCanonicalLocales(navigator.language);
+  const locale = Intl.getCanonicalLocales(navigator.language);
 
-  return <React.Fragment><Highlight items={locales} /></React.Fragment>;
+  return <span className="badge badge-pill badge-primary mr-2">{locale}</span>;
 };
