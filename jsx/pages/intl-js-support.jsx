@@ -39,12 +39,13 @@ class IntljsSupportPage extends React.Component {
 
   render() {
     const style = { backgroundColor: "AntiqueWhite" };
+    const fontSize = { fontSize: "14pt" };
 
     return (
       <div className="mt-3">
-        <div className="jumbotron pt-4 pb-2">
+        <div className="jumbotron pt-4 pb-3">
           <h4>This browser</h4>
-          <div className="mb-1">
+          <div style={fontSize}>
             <UILanguages />
             <BrowserInfo />
           </div>
@@ -94,7 +95,7 @@ function IntlJsSupport({ data }) {
   });
 
   return (
-    <table className="table table-md table-hover">
+    <table className="table table-sm table-hover">
       <thead>
         <th>Intl Object</th>
         <th class="text-center">This browser</th>
@@ -109,7 +110,7 @@ function BrowserInfo() {
   let tokens = getTokens(navigator.userAgent);
 
   const pills = tokens.map(token => {
-    return <span className="badge badge-info mr-1">{token}</span>;
+    return <span className="badge badge-secondary mr-1">{token}</span>;
   });
   
   return (

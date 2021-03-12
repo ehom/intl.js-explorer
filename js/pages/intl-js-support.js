@@ -108,13 +108,14 @@ var IntljsSupportPage = function (_React$Component) {
     key: "render",
     value: function render() {
       var style = { backgroundColor: "AntiqueWhite" };
+      var fontSize = { fontSize: "14pt" };
 
       return React.createElement(
         "div",
         { className: "mt-3" },
         React.createElement(
           "div",
-          { className: "jumbotron pt-4 pb-2" },
+          { className: "jumbotron pt-4 pb-3" },
           React.createElement(
             "h4",
             null,
@@ -122,7 +123,7 @@ var IntljsSupportPage = function (_React$Component) {
           ),
           React.createElement(
             "div",
-            { className: "mb-1" },
+            { style: fontSize },
             React.createElement(UILanguages, null),
             React.createElement(BrowserInfo, null)
           )
@@ -192,7 +193,7 @@ function IntlJsSupport(_ref2) {
 
   return React.createElement(
     "table",
-    { className: "table table-md table-hover" },
+    { className: "table table-sm table-hover" },
     React.createElement(
       "thead",
       null,
@@ -226,7 +227,7 @@ function BrowserInfo() {
   var pills = tokens.map(function (token) {
     return React.createElement(
       "span",
-      { className: "badge badge-info mr-1" },
+      { className: "badge badge-secondary mr-1" },
       token
     );
   });
