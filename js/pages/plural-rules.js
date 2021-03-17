@@ -1,109 +1,127 @@
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 var PluralRulesPage = function PluralRulesPage() {
-  var locales = ["en", "fr", "ar", "he", "zh", "ja", "ru", "pl"];
+  var selection = [{ language: "en", maximum: "199" }, { language: "fr", maximum: "199" }, { language: "zh", maximum: "199" }, { language: "ja", maximum: "199" }, { language: "ko", maximum: "199" }, { language: "tr", maximum: "40" }, { language: "cs", maximum: "100" }, { language: "ar", maximum: "203" }, { language: "he", maximum: "41" }, { language: "ru", maximum: "41" }, { language: "pl", maximum: "42" }];
 
-  var TableHeader = function TableHeader(_ref) {
-    var labels = _ref.labels;
-
-    var columnHeaders = labels.map(function (label, index) {
-      if (index === 0) {
-        return React.createElement(
-          React.Fragment,
-          null,
-          React.createElement("th", null),
-          React.createElement(
-            "th",
-            null,
-            label
-          )
-        );
-      }
-      return React.createElement(
-        "th",
-        null,
-        label
-      );
-    });
-
+  var display = selection.map(function (entry) {
     return React.createElement(
-      "thead",
-      null,
-      React.createElement(
-        "tr",
-        null,
-        columnHeaders
-      )
-    );
-  };
-
-  // create array filled with values 0 to 9
-  var counts = [].concat(_toConsumableArray(Array(112).keys()));
-
-  var rows = counts.map(function (count) {
-    var values = locales.map(function (locale, index) {
-      var f = new Intl.PluralRules(locale);
-      if (index === 0) {
-        return React.createElement(
-          React.Fragment,
-          null,
-          React.createElement(
-            "td",
-            null,
-            count
-          ),
-          React.createElement(
-            "td",
-            { className: f.select(count) },
-            f.select(count)
-          )
-        );
-      }
-      return React.createElement(
-        React.Fragment,
-        null,
-        React.createElement(
-          "td",
-          { className: f.select(count) },
-          f.select(count)
-        )
-      );
-    });
-    return React.createElement(
-      "tr",
-      null,
-      values
+      "div",
+      { className: "mb-4" },
+      React.createElement(PluralRulesLayout, { language: entry.language, numbers: entry.maximum })
     );
   });
 
-  var style = { backgroundColor: "AntiqueWhite" };
-
   return React.createElement(
     "div",
-    { className: "mt-3" },
+    { className: "pb-5 mb-5" },
     React.createElement(
-      "div",
-      { className: "jumbotron pt-4 pb-2" },
-      React.createElement(Banner, { text: "Intl.PluralRules of several locales" })
+      "h1",
+      { className: "mt-5 mb-5" },
+      React.createElement(
+        "span",
+        { className: "text-muted" },
+        "Here are "
+      ),
+      "Plural Rules for several languages"
     ),
     React.createElement(
       "div",
-      { className: "container", style: style },
-      React.createElement(
-        "table",
-        { className: "table table-hover table-responsive" },
-        React.createElement(
-          "caption",
-          null,
-          "count"
-        ),
-        React.createElement(TableHeader, { labels: locales }),
-        React.createElement(
-          "tbody",
-          null,
-          rows
-        )
-      )
+      null,
+      display
     )
+  );
+};
+
+var getPluralRules = function getPluralRules(locale, options, numbers) {
+  var localePluralRules = new Intl.PluralRules(locale, options);
+
+  // Map values of an array to a table
+  var pluralRules = numbers.reduce(function (accumulator, key) {
+    accumulator[key] = localePluralRules.select(key);
+    return accumulator;
+  }, {});
+
+  return pluralRules;
+};
+
+var shrinkRules = function shrinkRules(rules) {
+  var compacted = [];
+  var index = 0;
+
+  // initialize
+  compacted.push({
+    range: { start: 0, end: 0 },
+    rule: rules[0]
+  });
+
+  for (var i = 1; i < Object.keys(rules).length; i++) {
+    if (compacted[index].rule === rules[i]) {
+      compacted[index].range.end = i;
+    } else {
+      index++;
+      compacted.push({
+        range: { start: i, end: i },
+        rule: rules[i]
+      });
+    }
+  }
+  return compacted;
+};
+
+var PluralRulesLayout = function PluralRulesLayout(_ref) {
+  var language = _ref.language,
+      numbers = _ref.numbers;
+
+  console.time(language);
+
+  var arrayOfZeros = new Array(parseInt(numbers)).fill(0);
+  var enPluralRules = getPluralRules(language, { type: "cardinal" }, Object.keys(arrayOfZeros));
+
+  console.debug(enPluralRules);
+
+  var compactRules = shrinkRules(enPluralRules);
+  // ^^^^ should really save this somewhere
+  // ^^^^ time saver
+
+  var items = compactRules.map(function (entry) {
+    var _entry$range = entry.range,
+        start = _entry$range.start,
+        end = _entry$range.end;
+
+    var NDASH = "\u2013";
+    var text = start !== end ? start + " " + NDASH + " " + end : "" + start;
+
+    var name = "badge badge-pill";
+    if (entry.rule === "many") {
+      name = name + " badge-secondary";
+    } else if (entry.rule === "other") {
+      name = name + " badge-info";
+    }
+
+    console.timeEnd(language);
+
+    return React.createElement(
+      "div",
+      { className: "flex-item" },
+      React.createElement(
+        "p",
+        { className: "language" },
+        language
+      ),
+      React.createElement(
+        "p",
+        { className: name },
+        entry.rule
+      ),
+      React.createElement(
+        "p",
+        null,
+        text
+      )
+    );
+  });
+
+  return React.createElement(
+    "div",
+    { className: "flex-container" },
+    items
   );
 };
