@@ -11,7 +11,7 @@ var PluralRulesPage = function PluralRulesPage() {
 
   return React.createElement(
     "div",
-    { className: "constainer mt-3 pb-5 mb-5" },
+    { className: "mt-3 pb-5 mb-5" },
     React.createElement(
       "div",
       { className: "jumbotron pt-4 pb-2" },

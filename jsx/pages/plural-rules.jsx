@@ -20,7 +20,7 @@ const PluralRulesPage = () => {
   ));
 
   return (
-    <div className="constainer mt-3 pb-5 mb-5">
+    <div className="mt-3 pb-5 mb-5">
       <div className="jumbotron pt-4 pb-2">
         <Banner text="Plural Rules for several languages" />
       </div>
