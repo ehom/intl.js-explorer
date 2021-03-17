@@ -9,3 +9,31 @@ body {
 .many {
   background-color: FloralWhite;
 }
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+}
+
+.flex-item {
+  margin-top: 10px;
+  margin-right: 10px;
+  // background-image: linear-gradient(90deg, LightGrey, White);
+  background: AntiqueWhite;
+  width: 200px;
+  height: 150px;
+  text-align: center;
+}
+
+.flex-item:hover {
+  border-width: 2px;
+  border-style: solid;
+  border-color: gray;
+}
+
+.language {
+  text-align: left;
+}
