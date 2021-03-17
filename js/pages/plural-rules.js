@@ -11,16 +11,11 @@ var PluralRulesPage = function PluralRulesPage() {
 
   return React.createElement(
     "div",
-    { className: "pb-5 mb-5" },
+    { className: "constainer mt-3 pb-5 mb-5" },
     React.createElement(
-      "h1",
-      { className: "mt-5 mb-5" },
-      React.createElement(
-        "span",
-        { className: "text-muted" },
-        "Here are "
-      ),
-      "Plural Rules for several languages"
+      "div",
+      { className: "jumbotron pt-4 pb-2" },
+      React.createElement(Banner, { text: "Plural Rules for several languages" })
     ),
     React.createElement(
       "div",
