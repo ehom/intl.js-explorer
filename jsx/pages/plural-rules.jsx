@@ -20,11 +20,10 @@ const PluralRulesPage = () => {
   ));
 
   return (
-    <div className="pb-5 mb-5">
-      <h1 className="mt-5 mb-5">
-        <span className="text-muted">Here are </span>Plural Rules for several
-        languages
-      </h1>
+    <div className="mt-3 pb-5 mb-5">
+      <div className="jumbotron pt-4 pb-2">
+        <Banner text="Plural Rules for several languages" />
+      </div>
       <div>{display}</div>
     </div>
   );
