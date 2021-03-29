@@ -13,6 +13,7 @@ const FormattedDatesPage = () => {
     "zh-TW",
     "ja-JP",
     "ko-KR",
+    "th-TH",
     "es-ES",
     "es-MX",
     "pt-BR",
